@@ -1,0 +1,43 @@
+{% extends 'listado_base.html' %}
+{% load static %}
+
+{% block content %}
+<title>{% block title %}Listado de prestamos{% endblock %}</title>
+<h1>Prestamos</h1>
+
+<!-- Formulario de filtros -->
+<form method="get" action="{% url 'listado_prestamos' %}">
+    <!-- Filtro por materia -->
+    <label for="materia">Filtrar por materia:</label>
+    <select name="materia" id="materia">
+        <option value="">--Seleccione materia--</option>
+        <option value="BASES_DE_DATOS" {% if request.GET.materia == 'BASES_DE_DATOS' %}selected{% endif %}>Base de Datos</option>
+        <option value="APLICACION_NUEVAS_TECNOLOGIAS" {% if request.GET.materia == 'APLICACION_NUEVAS_TECNOLOGIAS' %}selected{% endif %}>Aplicación de Nuevas Tecnologías</option>
+        <option value="PROGRAMACION" {% if request.GET.materia == 'PROGRAMACION' %}selected{% endif %}>Programación</option>
+        <option value="LABORATORIO_INFORMATICA" {% if request.GET.materia == 'LABORATORIO_INFORMATICA' %}selected{% endif %}>Laboratorio de Informática</option>
+    </select>
+
+    
+    <label for="prestado">Filtrar por estado:</label>
+    <select name="prestado" id="prestado">
+        <option value="">--Seleccione estado--</option>
+        <option value="true" {% if request.GET.prestado == 'true' %}selected{% endif %}>Prestado</option>
+        <option value="false" {% if request.GET.prestado == 'false' %}selected{% endif %}>Devuelto</option>
+    </select>
+
+    <button type="submit">Filtrar</button>
+</form>
+
+<div class="equipos-container">
+    {% for prestamo in prestamos %}
+        <div class="equipo-item">
+            <strong>Equipo:</strong> <p>{{ prestamo.equipo.tipo }}, {{ prestamo.equipo.marca }}</p><br>
+            <strong>Alumno:</strong> <p>{{ prestamo.alumno }}</p><br>
+            <strong>Fecha préstamo:</strong> <p>{{ prestamo.fecha_prestamo }}</p><br>
+            <strong>Fecha devolución:</strong> <p>{{ prestamo.fecha_devolucion }}</p><br>
+            <strong>Materia:</strong> <p>{{ prestamo.materia }}</p><br>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

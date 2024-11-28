@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sign Up{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/form.css">
+</head>
+
+<a href="{% url 'index' %}">Volver a inicio</a>
+<div class="container">
+    <h1>Registro</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrar</button>
+        <a href="{% url 'login' %}">¿Ya tienes cuenta? Inicia sesión</a>
+    </form>
+</div>

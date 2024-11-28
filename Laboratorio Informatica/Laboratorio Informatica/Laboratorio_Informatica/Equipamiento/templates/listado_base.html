@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/css/listado.css">
+</head>
+
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'listado_equipamientos' %}">Listado Equipamiento</a></li>
+            <li><a href="{% url 'listado_prestamos'%}">Prestamos</a></li>
+            <li><a href="{% url 'modificacion'%}">Modificar</a></li>
+            <li><a href="{% url 'Lote'%}">Cargar</a></li>
+            
+            <li>
+                <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+

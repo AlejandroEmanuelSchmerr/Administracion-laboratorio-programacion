@@ -1,0 +1,33 @@
+{% extends 'listado_base.html' %}
+{%load static%}  
+
+{% block content %}
+<title>{% block title %}Listado de equipamiento{% endblock %}</title>
+<h1>Listado de Equipamientos</h1>
+
+<div class="equipos-container">
+    {% for equipo in equipos %}
+        <div class="equipo-item">
+            <strong>Marca:</strong> <p>{{ equipo.marca }}</p><br>
+            <strong>Número de Serie:</strong><p> {{ equipo.nro_serie }}</p><br>
+            <strong>Tipo:</strong><p>{{ equipo.tipo }}</p> <br>
+            <strong>Estado:</strong> <p>{{ equipo.estado }}</p><br>
+            <strong>Descripción:</strong><p> {{ equipo.descripcion }}</p><br>
+            <strong>Laboratorio:</strong><p> {{ equipo.lab }}</p><br>
+            <strong>Imagen:</strong>
+            {% if equipo.imagen %}
+                <img src="{{ equipo.imagen.url }}" alt="{{ equipo.marca }}" style="max-width: 100px; height: auto;">
+            {% endif %}
+            <br>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+

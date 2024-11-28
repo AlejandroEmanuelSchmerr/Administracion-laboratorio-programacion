@@ -1,0 +1,42 @@
+{% extends 'listado_base.html' %}
+{% load static %}  
+{% block content %}
+
+<title>{%block title%}Modificar{%endblock%}</title>
+<h1>Modificar Equipamiento</h1>
+
+<form method="post" class="modificar-equipamiento-form">
+    {% csrf_token %}
+    <label for="equipo_id">Selecciona un equipo para modificar:</label>
+    <select name="equipo_id" id="equipo_id" required onchange="this.form.submit()">
+        <option value="">-- Selecciona un equipo --</option>
+        {% for equipo in equipos %}
+            <option value="{{ equipo.id }}">{{ equipo.marca }} - {{ equipo.nro_serie }}</option>
+        {% endfor %}
+    </select>
+</form>
+
+{% if equipo_seleccionado %}
+<form method="post" class="modificar-equipamiento-form">
+    {% csrf_token %}
+    <input type="hidden" name="equipo_id" value="{{ equipo_seleccionado.id }}">
+    
+    <label for="estado">Estado:</label>
+    <select name="estado" id="estado" required>
+        {% for estado in equipo_seleccionado.ESTADO_CHOICES %}
+            <option value="{{ estado.0 }}" {% if equipo_seleccionado.estado == estado.0 %}selected{% endif %}>{{ estado.1 }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="descripcion">Descripción:</label>
+    <textarea name="descripcion" id="descripcion" required>{{ equipo_seleccionado.descripcion }}</textarea>
+    
+    <label for="lab">Laboratorio:</label>
+    <input type="text" name="lab" id="lab" value="{{ equipo_seleccionado.lab }}" required>
+    
+    <button type="submit">Guardar Cambios</button>
+</form>
+{% endif %}
+
+
+{% endblock %}

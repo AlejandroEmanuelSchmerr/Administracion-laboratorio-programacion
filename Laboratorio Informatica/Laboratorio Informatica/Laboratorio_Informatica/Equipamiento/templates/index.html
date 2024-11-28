@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>{% block title %}Inicio{% endblock %}</title>
+
+<h1 class="titulo-principal">Laboratorio Informático</h1>
+
+<div class="img-inicio">
+    <img src="{% static '/img/laboratorio.jpg' %}" alt="Laboratorio">
+</div>
+
+<div class="container">
+    <section class="especialidades" id="especialidades">
+        <h1 class="especialidades-titulo">Especialidades</h1>  
+
+        <div class="especialidad-item">
+            <h3>Programación</h3>
+            <p>La especialidad en programación se centra en el desarrollo de software y aplicaciones. Los estudiantes aprenden a escribir código en diversos lenguajes de programación como Python, Java, C++, y JavaScript.</p>
+            <div class="img-proyecto1">
+                <img src="{% static '/img/programacion.jfif' %}" alt="Programación">
+            </div>
+        </div>
+
+        <div class="especialidad-item">
+            <h3>Electrónica</h3>
+            <p>La especialidad en electrónica trata sobre el diseño y mantenimiento de circuitos electrónicos. Los estudiantes trabajan con componentes electrónicos y diseñan circuitos para diversas aplicaciones.</p>
+            <div class="img-proyecto1">
+                <img src="{% static '/img/electronica.jfif' %}" alt="Electrónica">
+            </div>
+        </div>
+
+        <div class="especialidad-item">
+            <h3>Electricidad</h3> 
+            <p>La especialidad en electricidad se enfoca en el estudio y aplicación de sistemas eléctricos. Los estudiantes aprenden sobre circuitos, sistemas de energía, y mantenimiento de instalaciones eléctricas.</p>
+            <div class="img-proyecto1">
+                <img src="{% static '/img/electricidad.jfif' %}" alt="Electricidad"> 
+            </div>
+        </div>
+
+        <div class="especialidad-item">
+            <h3>Automotor</h3>
+            <p>La especialidad automotriz se enfoca en el mantenimiento y reparación de vehículos. Los estudiantes aprenden sobre motores, sistemas de transmisión, frenos, y diagnósticos de fallas.</p>
+            <div class="img-proyecto1">
+                <img src="{% static '/img/automotor.jfif' %}" alt="Automotor">
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section class="informacion" id="informacion">
+        <h1>Información</h1>
+        <h3>Ubicación</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38524.236094419015!2d-64.1907569124957!3d-31.411547896958737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a2a430e1999b%3A0xc386bf8267afb442!2sInstituto%20Provincial%20de%20Educaci%C3%B3n%20T%C3%A9cnica%20(I.P.E.T.)%20N%C2%BA%2057%20%22Comodoro%20Mart%C3%ADn%20Rivadavia%22!5e0!3m2!1ses!2sar!4v1725486741871!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+</div>
+
+<div class="container">
+    <section class="contacto" id="contacto">
+        <h1>Contacto</h1>
+        <p>WhatsApp: +54 9 351 433 9170</p>
+        <p>Email: ipet57@gmail.com</p>
+        <p>Facebook: Ipet 57</p>
+        <p>Instagram: Ipet 57</p>     
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'listado_base.html' %}
+{%load static%}  
+
+{% block content %}
+<title>{% block title %}Carga de excel{% endblock %}</title>
+<div class="col-md-12 text-center mb-4">
+    <h1 id="Especialidades">CARGAR CONJUNTO DE DATOS</h1>
+</div>
+
+<div class="col-md-12 text-center mb-4">
+    <p class="texto-carga">Para realizar la carga, descarga el modelo que se tiene que completar y subir.</p>
+    <a href="{% url 'Modelo' 'lotes.xlsx' %}" class="btn btn-descargar">
+        Descargar archivo
+    </a>
+</div>
+
+<div class="col-md-12 text-center mb-4">
+    <p class="texto-carga">Seleccionar el archivo modelo que completaste</p>
+    
+    <form method="POST" enctype="multipart/form-data" action="{% url 'Lote' %}" class="formulario-carga">
+        {% csrf_token %}
+        <input type="file" name="archivo" id="archivo" accept=".xls,.xlsx" required>
+        <label for="archivo">Examinar Archivo</label>
+        <button type="submit" class="btn btn-cargar">Cargar</button>
+    </form>
+</div>
+
+{% endblock %}

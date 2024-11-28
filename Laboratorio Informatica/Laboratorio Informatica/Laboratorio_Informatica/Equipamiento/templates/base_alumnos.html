@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Título por Defecto{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/alumno.css"> 
+</head>
+<body>
+    <header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'alumno_inicio' %}">Equipos</a></li>
+            <li><a href="{% url 'mis_prestamos' %}">Mis Préstamos</a></li>
+            <li>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar Sesión</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

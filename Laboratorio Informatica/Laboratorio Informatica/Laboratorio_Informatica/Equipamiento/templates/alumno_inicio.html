@@ -1,0 +1,30 @@
+{% extends 'base_alumnos.html' %}
+{% load static %}
+
+{% block title %}Equipamientos Disponibles{% endblock %}
+
+{% block content %}
+<h2>Equipos Disponibles</h2>
+<ul>
+    {% for equipo in equipos %}
+    <li>
+        <strong>{{ equipo.marca }}</strong><p> Tipo: {{ equipo.tipo }} - Estado: {{ equipo.estado }}</p>
+        {% if equipo.estado == 'disponible' %}
+            <form action="{% url 'realizar_prestamo' equipo.id %}" method="post">
+                {% csrf_token %}
+                <label for="materia">Selecciona la materia:</label>
+                <select name="materia" id="materia" required>
+                    <option value="BASES_DE_DATOS">Bases de Datos</option>
+                    <option value="APLICACION_NUEVAS_TECNOLOGIAS">Aplicación de Nuevas Tecnologías</option>
+                    <option value="PROGRAMACION">Programación</option>
+                    <option value="LABORATORIO_INFORMATICA">Laboratorio de Informática</option>
+                </select>
+                <button type="submit">Solicitar Préstamo</button>
+            </form>
+        {% else %}
+            <p>Equipo no disponible</p>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

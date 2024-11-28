@@ -1,0 +1,25 @@
+{% extends 'base_alumnos.html' %}
+{% load static %}
+
+{% block title %}Mis Préstamos{% endblock %}
+
+{% block content %}
+<h2>Mis Préstamos</h2>
+    <ul>
+        {% for prestamo in prestamos %}
+        <li>
+            <strong>{{ prestamo.equipo.marca }} - {{ prestamo.equipo.tipo }}</strong> 
+            <p> Fecha de préstamo: {{ prestamo.fecha_prestamo }}</p>
+            {% if not prestamo.fecha_devolucion %}
+            <form action="{% url 'devolver_prestamo' prestamo.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Devolver Equipo</button>
+            </form>
+            {% else %}
+                <p>Equipo devuelto el {{ prestamo.fecha_devolucion }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
